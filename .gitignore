@@ -1,0 +1,9 @@
+*.wad
+
+# Image formats
+*.jpg
+*.tga
+*.pcx
+*.bmp
+*.ppm
+*.psd
