@@ -1,0 +1,31 @@
+name: "export WAD3"
+on:
+  push:
+    tags:
+      - "*"
+
+env:
+  EXPORT_NAME: OpenRomu.wad
+  BUILD_PATH_ROOT: /tmp/build
+
+jobs:
+  export-game:
+    name: All Platform Export
+    runs-on: ubuntu-20.04
+    container:
+      image: stalker2106x/wad3-cli:1.0.0
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      # build WAD
+      - name: WAD Build
+        run: |
+          wad3-cli bundle . $BUILD_PATH_ROOT/$EXPORT_NAME
+      # Release to this repo
+      - name: Private Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          token: ${{ secrets.ADMIN_TOKEN }}
+          files: |
+            $BUILD_PATH_ROOT/$EXPORT_NAME
