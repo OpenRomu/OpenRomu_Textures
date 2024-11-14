@@ -10,7 +10,7 @@ env:
 
 jobs:
   export-game:
-    name: All Platform Export
+    name: Export WAD
     runs-on: ubuntu-20.04
     container:
       image: stalker2106x/wad3-cli:1.0.0
@@ -20,7 +20,7 @@ jobs:
       # build WAD
       - name: WAD Build
         run: |
-          wad3-cli bundle . $BUILD_PATH_ROOT/$EXPORT_NAME
+          wad3-cli bundle . $BUILD_PATH_ROOT/$EXPORT_NAME --recursive
       # Release to this repo
       - name: Private Release
         uses: softprops/action-gh-release@v2
