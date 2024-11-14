@@ -28,4 +28,4 @@ jobs:
           generate_release_notes: true
           token: ${{ secrets.ADMIN_TOKEN }}
           files: |
-            $BUILD_PATH_ROOT/$EXPORT_NAME
+            ${{env.BUILD_PATH_ROOT}}/${{env.EXPORT_NAME}}
