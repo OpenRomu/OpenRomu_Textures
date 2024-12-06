@@ -7,3 +7,6 @@
 *.bmp
 *.ppm
 *.psd
+
+# Imports
+*.import
